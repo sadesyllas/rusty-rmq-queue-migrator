@@ -1,11 +1,10 @@
-mod config;
-mod error;
-mod rabbitmq;
-mod worker;
+use rusty_rmq_queue_migrator::{
+    config::Config,
+    error::AppError,
+    rabbitmq::{api::ManagementApiClient, connector},
+    worker,
+};
 
-use crate::config::Config;
-use crate::error::AppError;
-use crate::rabbitmq::{api::ManagementApiClient, connector};
 use anyhow::{anyhow, Context, Result};
 use clap::Parser;
 use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
